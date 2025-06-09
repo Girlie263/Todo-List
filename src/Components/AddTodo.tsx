@@ -22,7 +22,7 @@ export default function AddTodo({onAddTodo}: AddTodoProps) {
 
 
     return (
-        <div className="justify-center flex">
+        <div className="justify-center flex ">
             <form onSubmit={handleSubmit}>
                 <input type="text"  placeholder="What needs to be done?"
                 value={title}
