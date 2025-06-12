@@ -27,7 +27,7 @@ export default function AddTodo({onAddTodo}: AddTodoProps) {
                 <input type="text"  placeholder="What needs to be done?"
                 value={title}
                 onChange={(e) => setTitle(e.target.value) } 
-                className="border border-gray-300 py-1 grow items-center rounded-md"
+                className="border border-gray-300 py-1 grow items-center  space-y-2 shadow-md rounded-md bg-white p-4 mt-4  "
                 />
                 <button type="submit" className="text-white bg-black hover:bg-gray-700 py-1 px-2 rounded-md">Add</button>
             </form>

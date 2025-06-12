@@ -19,10 +19,18 @@ function App() {
     })
   }
 
+  function handleDeleteTodo(id:number) {
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.id !== id);
+    })
+
+  }
+
+
 
   return (
-    <main className="bg-gray-100 h-screen">
-      <h1 className="font-bold text-3xl text-center">Todos</h1>
+    <main className="bg-gray-100 h-screen overflow-y-auto ">
+      <h1 className="font-bold text-3xl text-center mb-2">Todos</h1>
       <AddTodo 
       onAddTodo={(title) => {
         setTodos((prevTodos) => {
@@ -31,23 +39,28 @@ function App() {
             {
               id: prevTodos.length > 0 ? prevTodos[prevTodos.length - 1].id + 1 : 1,
               title: title,
-              completed: false
+              completed: false,
+              onDelete: handleDeleteTodo
             }
           ]
         })
       }}
       />
-      <div className="max-w-lg mx-auto">
+      <div className="max-w-lg mx-auto  ">
         <div className="space-y-2 shadow-md rounded-md bg-white p-4 mt-4 text-center">
           {todos.map(todo => (
-            <TodoItem todo={todo}
-            key ={todo.id}
-            onCompletedTodo={handleCompletedTodo}
-
-             />
-            
+            <TodoItem
+              todo={todo}
+              key={todo.id}
+              onCompletedTodo={handleCompletedTodo}
+              onDelete={handleDeleteTodo}
+            />
           ))}
+          {todos.length === 0 && (
+          <p className="text-gray-400">No Todos, add todos</p>
+        )}
         </div>
+        
       </div>
     </main>
   )
